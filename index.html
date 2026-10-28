@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dmytro Shyshkin — Portafolio web</title>
+<meta name="description" content="Especialista WordPress en Madrid. Proyectos reales: e-learning, e-commerce, clínica, turismo, industria y legal.">
+<meta property="og:title" content="Dmytro Shyshkin — Portafolio web">
+<meta property="og:description" content="6 proyectos reales con WordPress, Elementor y WooCommerce.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  html,body{margin:0}
+  img{max-width:100%}
+  /* Layout: single centered reading column; header, then a two-up grid of project cards with a site screenshot on top */
+  :root{
+    --bg:#f5f6f8; --surface:#ffffff; --fg:#191c20; --muted:#5a626b;
+    --line:#e4e7ea; --accent:#2f56c6; --accent-soft:rgba(47,86,198,.08);
+    --font-display:"Hanken Grotesk", system-ui, -apple-system, sans-serif;
+    --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#121418; --surface:#1a1e23; --fg:#e6e9ec; --muted:#98a1aa;
+      --line:#2a2f36; --accent:#7f9df2; --accent-soft:rgba(127,157,242,.12);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#121418; --surface:#1a1e23; --fg:#e6e9ec; --muted:#98a1aa;
+    --line:#2a2f36; --accent:#7f9df2; --accent-soft:rgba(127,157,242,.12);
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--fg);
+    font-family:var(--font-display); font-weight:400;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:880px; margin:0 auto;
+    padding-left:max(20px, env(safe-area-inset-left,0px));
+    padding-right:max(20px, env(safe-area-inset-right,0px));
+    padding-block:clamp(40px,7vw,72px);
+  }
+  a{color:inherit}
+  .eyebrow{
+    font-family:var(--font-mono); font-size:.72rem; font-weight:500;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ---- Header ---- */
+  header{display:flex; gap:22px; align-items:center; flex-wrap:wrap}
+  .avatar{
+    width:84px; height:84px; border-radius:50%; object-fit:cover;
+    border:1px solid var(--line); flex:0 0 auto;
+  }
+  .id{min-width:0}
+  .id h1{
+    font-size:clamp(1.55rem,4.5vw,2.1rem); font-weight:700; line-height:1.1;
+    margin:.35rem 0 .25rem; text-wrap:balance; letter-spacing:-.01em;
+  }
+  .role{font-family:var(--font-mono); font-size:.82rem; color:var(--accent); font-weight:500}
+  .intro{margin:26px 0 0; max-width:62ch; font-size:1.04rem}
+  .contact{
+    margin-top:18px; display:flex; flex-wrap:wrap; gap:8px 20px;
+    font-family:var(--font-mono); font-size:.82rem;
+  }
+  .contact span, .contact a{color:var(--muted); display:inline-flex; align-items:center; gap:7px}
+  .contact a:hover{color:var(--accent)}
+  .contact .k{color:var(--accent); opacity:.85}
+
+  .rule{height:1px; background:var(--line); border:0; margin:34px 0 30px}
+  .section-eyebrow{margin-bottom:22px; display:block}
+  .summary{font-family:var(--font-display); font-weight:400; font-size:1.04rem; line-height:1.6; max-width:62ch; margin:0; color:var(--fg)}
+  .section-title{font-family:var(--font-display); font-weight:700; font-size:clamp(1.25rem,3.2vw,1.5rem); line-height:1.2; letter-spacing:-.01em; margin:0 0 22px}
+
+  /* ---- Project grid ---- */
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+  @media (max-width:640px){ .grid{grid-template-columns:1fr} }
+
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; display:flex; flex-direction:column; min-width:0;
+    transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px -14px rgba(0,0,0,.35)}
+  .thumb{
+    display:block; width:100%; aspect-ratio:16/9; object-fit:cover; object-position:top center;
+    border-bottom:1px solid var(--line); background:var(--accent-soft);
+  }
+  .body{padding:18px 20px 18px; display:flex; flex-direction:column; flex:1; min-width:0}
+  .top{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:10px}
+  .sector{font-family:var(--font-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+  .tag{
+    font-family:var(--font-mono); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); background:var(--accent-soft); padding:3px 8px; border-radius:20px; white-space:nowrap;
+  }
+  .body h2{font-size:1.15rem; font-weight:600; line-height:1.25; margin:0 0 8px; letter-spacing:-.01em}
+  .body p{margin:0 0 14px; font-size:.93rem}
+  .tech{display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; margin-bottom:14px}
+  .tech span{
+    font-family:var(--font-mono); font-size:.67rem; color:var(--muted);
+    border:1px solid var(--line); border-radius:6px; padding:3px 7px;
+  }
+  .visit{
+    font-family:var(--font-mono); font-size:.77rem; font-weight:500; color:var(--accent);
+    text-decoration:none; display:inline-flex; align-items:center; gap:7px; align-self:flex-start; flex-wrap:wrap;
+  }
+  .visit .dom{color:var(--muted); font-weight:400}
+  .visit:hover .arw{transform:translateX(3px)}
+  .arw{transition:transform .18s ease}
+
+  footer{margin-top:34px; color:var(--muted); max-width:62ch}
+  footer .note{font-family:var(--font-mono); font-size:.74rem; letter-spacing:.02em; line-height:1.7}
+
+  a:focus-visible, .card:focus-within{outline:2px solid var(--accent); outline-offset:3px}
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <img class="avatar" src="dima.jpg" alt="Dmytro Shyshkin">
+    <div class="id">
+      <span class="eyebrow">Portafolio</span>
+      <h1>Dmytro Shyshkin</h1>
+      <div class="role">Especialista WordPress, Maquetación web, Madrid</div>
+    </div>
+  </header>
+
+  <p class="intro">
+    Creo y mantengo sitios web y tiendas online con WordPress, Elementor y WooCommerce.
+    Una selección de proyectos reales en los que he trabajado:
+  </p>
+
+  <div class="contact">
+    <span><span class="k">@</span>dymadesarrollo@gmail.com</span>
+    <a href="https://www.linkedin.com/in/dmytro-shyshkin-7346282ab/" target="_blank" rel="noopener"><span class="k">in</span> LinkedIn</a>
+  </div>
+
+  <hr class="rule">
+  <h2 class="section-title">Proyectos seleccionados</h2>
+
+  <div class="grid">
+
+    <article class="card">
+      <img class="thumb" src="formacion.jpg" alt="Captura de formacionpsicoterapia.com" loading="lazy">
+      <div class="body">
+        <div class="top"><span class="sector">Formación – e-learning</span><span class="tag">+15.000 usuarios</span></div>
+        <h2>Formación Psicoterapia</h2>
+        <p>Plataforma de formación online con más de 15.000 usuarios registrados: 25 cursos, pagos y seminarios mensuales. Desarrollo completo, soporte técnico y mantenimiento durante 2 años.</p>
+        <div class="tech"><span>WordPress</span><span>Tutor LMS Pro</span><span>WooCommerce</span><span>Elementor</span></div>
+        <a class="visit" href="https://formacionpsicoterapia.com/" target="_blank" rel="noopener">Ver sitio <span class="arw">→</span> <span class="dom">formacionpsicoterapia.com</span></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="thumb" src="pugil.jpg" alt="Captura de pugil.es" loading="lazy">
+      <div class="body">
+        <div class="top"><span class="sector">Moda – e-commerce</span><span class="tag">Citas online</span></div>
+        <h2>Pugil</h2>
+        <p>Sastrería a medida y tienda vintage en Madrid: tienda online y reserva de citas con los sastres. Diseño y desarrollo de la web completa.</p>
+        <div class="tech"><span>WordPress</span><span>WooCommerce</span><span>Elementor</span></div>
+        <a class="visit" href="https://pugil.es/" target="_blank" rel="noopener">Ver sitio <span class="arw">→</span> <span class="dom">pugil.es</span></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="thumb" src="institutolipedema.jpg" alt="Captura de institutolipedema.com" loading="lazy">
+      <div class="body">
+        <div class="top"><span class="sector">Salud – clínica</span><span class="tag">Madrid y Barcelona</span></div>
+        <h2>Instituto del Lipedema</h2>
+        <p>Web de una clínica médica con sedes en Madrid y Barcelona. Maquetación de todas las páginas a partir del estilo de referencia.</p>
+        <div class="tech"><span>WordPress</span><span>Elementor</span></div>
+        <a class="visit" href="https://institutolipedema.com/" target="_blank" rel="noopener">Ver sitio <span class="arw">→</span> <span class="dom">institutolipedema.com</span></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="thumb" src="lahuertona.jpg" alt="Captura de lahuertonacasarural.com" loading="lazy">
+      <div class="body">
+        <div class="top"><span class="sector">Turismo – alojamiento</span><span class="tag">Reservas</span></div>
+        <h2>La Huertona</h2>
+        <p>Casa rural con sistema de reservas y web en dos idiomas (ES/EN). Proyecto completo: maquetación, configuración de reservas y traducción.</p>
+        <div class="tech"><span>WordPress</span><span>Elementor</span><span>Hotel Booking</span><span>Polylang</span></div>
+        <a class="visit" href="https://lahuertonacasarural.com/" target="_blank" rel="noopener">Ver sitio <span class="arw">→</span> <span class="dom">lahuertonacasarural.com</span></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="thumb" src="bralo.jpg" alt="Captura de bralo.com" loading="lazy">
+      <div class="body">
+        <div class="top"><span class="sector">Industria – B2B</span><span class="tag">9 idiomas</span></div>
+        <h2>Bralo</h2>
+        <p>Fabricante industrial de fijaciones. Localización de la web a 9 idiomas con WPML y corrección del catálogo de productos.</p>
+        <div class="tech"><span>WordPress</span><span>Divi</span><span>WooCommerce</span><span>WPML</span></div>
+        <a class="visit" href="https://bralo.com/" target="_blank" rel="noopener">Ver sitio <span class="arw">→</span> <span class="dom">bralo.com</span></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="thumb" src="reclamacar.jpg" alt="Captura de reclamacar.es" loading="lazy">
+      <div class="body">
+        <div class="top"><span class="sector">Legal – servicios</span><span class="tag">Web corporativa</span></div>
+        <h2>Reclamacar</h2>
+        <p>Web corporativa de un bufete de reclamaciones por accidentes de tráfico, con ámbito nacional. Maquetación completa y adaptación a todos los dispositivos.</p>
+        <div class="tech"><span>WordPress</span><span>Elementor</span></div>
+        <a class="visit" href="https://reclamacar.es/" target="_blank" rel="noopener">Ver sitio <span class="arw">→</span> <span class="dom">reclamacar.es</span></a>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>
+    <p class="summary">Más de 25 sitios desarrollados y mantenimiento de ~30 más, en sectores como salud, e-commerce, educación, hostelería, inmobiliario y legal. Más ejemplos a petición.</p>
+  </footer>
+</div>
+
+</body>
+</html>
